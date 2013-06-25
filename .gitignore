@@ -1,0 +1,14 @@
+#Junc Files
+######################
+*.pyc
+
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# Settings
+######################
+settings.py
