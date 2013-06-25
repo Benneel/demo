@@ -1,0 +1,23 @@
+<html>
+
+<head><title> Productions </title><head>
+<body>
+
+	<h1> This is Productions page </h1>
+
+	<h2> Cataluge </h2>
+
+{% if productions %}
+	{% for p in productions %}
+		<p> {{ p.number}} </p>
+	{% endfor %}
+{% else %}
+	<h2> Not any production exist.. </h2> 
+{% endif %}
+	
+	<h4> {{ msg }} </h4>
+
+
+</body>
+
+</html>
