@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from demo.apps.ventas.models import production
+from demo.apps.home.forms import ContactForm
 
 def index_view(request):
 	return render_to_response('home/index.html',context_instance=RequestContext(request))
@@ -14,3 +15,9 @@ def productions_view(request):
 	prod = production.objects.filter(status=True)
 	ctx = {'productions':prod}
 	return render_to_response('home/productions.html', ctx, context_instance=RequestContext(request))
+
+def contacts_view(request):
+	theform = ContactForm()
+	ctx = {'form':theform}
+	return render_to_response('home/contacts.html',ctx,context_instance=RequestContext(request))
+

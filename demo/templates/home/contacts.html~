@@ -1,0 +1,14 @@
+<html>
+
+<head><title> Contacts </title><head>
+<body>
+
+	<h1> This is Contacts Form</h1>
+
+<form action="." method="POST">
+{{form.as_p}}
+<input tyoe="submit" value="submit"/>
+</form>
+</body>
+
+</html>
