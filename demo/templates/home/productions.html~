@@ -9,7 +9,7 @@
 	<h1> This is Productions page </h1>
 
 	<h2> Cataluge </h2>
-<br>
+
 <a href="{% url "vista_add_product" %}"> Click here to add a product</a>
 
 {% if productions %}
