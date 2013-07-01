@@ -5,10 +5,10 @@
 
 {% if info_send %}
 	thanks for entering data..
-	<br> This information has been recieved.. <br>
+	<br> This information has been received.. <br>
 	<p>Email: {{email}}</p>
 	<p>Title: {{title}}</p>
-	<p>Text: </p><br><br><h3>{{text}}<<h3></p>
+	<p>Text: <br><h3>{{text}}</h3></p>
 {% else %}
 	<form action="." method="POST">
 		{% csrf_token %}

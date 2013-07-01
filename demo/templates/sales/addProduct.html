@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>Adding Production</title>
+</head>
+<body>
+	<form action="." method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Save">
+		<input type="reset" value="Clear">
+	</form>
+<br>
+	{{ information }}
+</body>
+</html>

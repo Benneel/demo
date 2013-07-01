@@ -31,7 +31,7 @@ def contacts_view(request):
 			text = theform.cleaned_data['Text']
 			
 			# Configuration via email
-			to_admin = 'benneel7@gmail.com'
+			to_admin = '.com'
 			html_content = 'information received <br><br><br>***Message***<br><br>%s'%(text)
 			msg = EmailMultiAlternatives('To contact',html_content,'from@server.com',[to_admin])
 			msg.attach_alternative(html_content,'text/html')
