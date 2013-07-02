@@ -1,8 +1,11 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from demo.apps.ventas.models import production
-from demo.apps.home.forms import ContactForm
+from demo.apps.home.forms import ContactForm, LoginForm
 from django.core.mail import EmailMultiAlternatives
+
+from django.contrib.auth import login,logout,authenticate
+from django.http import HttpResponseRedirect
 
 def index_view(request):
 	return render_to_response('home/index.html',context_instance=RequestContext(request))
@@ -40,4 +43,28 @@ def contacts_view(request):
 		theform = ContactForm()
 	ctx = {'form':theform,'email':email,'title':title,'text':text,'info_send':info_send}
 	return render_to_response('home/contacts.html',ctx,context_instance=RequestContext(request))
+
+def login_view(request):
+	message = ""
+	if request.user.is_authenticated():
+		return HttpResponseRedirect('/')
+	else:
+		if request.method == "POST":
+			form = LoginForm(request.POST)
+			if form.is_valid():
+				username = form.cleaned_data['username']
+				password = form.cleaned_data['password']
+				user = authenticate(username=username,password=password)
+				if user is not None and user.is_active:
+					login(request,user)
+					return HttpResponseRedirect('/')
+				else:
+					message = "username or password incorrect"
+		form = LoginForm()
+		ctx = {'form':form,'message':message}
+		return render_to_response('home/login.html',ctx,context_instance=RequestContext(request))
+
+def logout_view(request):
+	logout(request)
+	return HttpResponseRedirect('/')
 
