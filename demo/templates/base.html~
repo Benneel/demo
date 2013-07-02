@@ -5,12 +5,13 @@
 </head>
 <body>
 <header>
+	<img src="{{ MEDIA_URL }}<images>/<django.gif>"/>
 	<h1>Demo Project</h1>
 	<nav>
-		<a href="{% url vista_principal %}"> Home</a>
-		<a href="{% url vista_productions %}"> Production</a>
-		<a href="{% url vista_contacts %}"> Contacts</a>
-		<a href="{% url vista_about %}"> About</a>
+		<a href="{% url "vista_principal" %}"> Home</a>
+		<a href="{% url "vista_productions" %}"> Production</a>
+		<a href="{% url "vista_contacts" %}"> Contacts</a>
+		<a href="{% url "vista_about" %}"> About</a>
 	</nav>
 </header>
 <section>
