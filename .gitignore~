@@ -9,9 +9,7 @@
 *.log
 *.sql
 *.sqlite
-*.mysqlite
 
 # Settings
 ######################
 settings.py
-
