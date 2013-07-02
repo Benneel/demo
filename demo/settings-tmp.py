@@ -17,7 +17,7 @@ DATABASES = {
         'NAME': 'demo',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
-        'PASSWORD': '1',
+        'PASSWORD': '',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
@@ -162,6 +162,6 @@ LOGGING = {
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'benneel7@gmail.com'
-EMAIL_HOST_PASSWORD = 'Issavvy777'
+EMAIL_HOST_USER = 'example@example.com'
+EMAIL_HOST_PASSWORD = '***'
 EMAIL_USE_TLS = True
