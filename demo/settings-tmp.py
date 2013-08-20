@@ -13,11 +13,11 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': '', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'demo',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
+        'USER': 'root',
+        'PASSWORD': '1',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
@@ -106,6 +106,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'demo.urls'
 
+AUTH_PROFILE_MODULE = 'home.userProfile'
+
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'demo.wsgi.application'
 
@@ -126,6 +128,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'demo.apps.ventas',
+    'demo.apps.home',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
 )
@@ -162,6 +165,6 @@ LOGGING = {
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'example@example.com'
-EMAIL_HOST_PASSWORD = '***'
+EMAIL_HOST_USER = 'benneel7@gmail.com'
+EMAIL_HOST_PASSWORD = 'Issavvy777'
 EMAIL_USE_TLS = True
