@@ -20,6 +20,11 @@ def productions_view(request):
 	ctx = {'productions':prod}
 	return render_to_response('home/productions.html', ctx, context_instance=RequestContext(request))
 
+def singleProduct_view(request, id_prod):
+	prod = production.objects.get(id=id_prod)
+	ctx = {'production':prod}
+	return render_to_response('home/SingleProduct.html',ctx,context_instance=RequestContext(request))
+
 def contacts_view(request):
 	info_send =False
 	email = ""

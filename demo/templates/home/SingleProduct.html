@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %} Product {{ production.number}} {% endblock %}
+
+{% block content %}
+	<h1> {{ production.number }} </h1><br>
+	<p> {{ production.description }} </p>
+	<br><br>
+	<a href="/productions/"> Return to the list </a>
+{% endblock %}
