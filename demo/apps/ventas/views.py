@@ -8,13 +8,20 @@ def add_product_view(request):
 	info = "Loading"
 	if request.user.is_authenticated():
 		if request.method == "POST":
-			form = addProductForm(request.POST)
+			form = addProductForm(request.POST,request.FILES)
 			if form.is_valid():
 				number = form.cleaned_data['number']
 				description = form.cleaned_data['description']
+				image = form.cleaned_data['image']
+				price = form.cleaned_data['price']
+				stock = form.cleaned_data['stock']
 				p = production()
+				if image:
+					p.image = image
 				p.number = number
 				p.description = description
+				p.price = price
+				p.stock = stock
 				p.status = True
 				p.save()
 				info = "was saved successfully"

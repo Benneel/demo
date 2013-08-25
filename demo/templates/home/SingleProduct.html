@@ -3,7 +3,13 @@
 
 {% block content %}
 	<h1> {{ production.number }} </h1><br>
-	<p> {{ production.description }} </p>
+	<img src="/media/{{ production.image }}" width="250px" height="250px"/>
+	<i> {{ production.description }} </i>
+	<p> $ {{ production.price }} </p>
+	<p> No. available: {{ production.stock }} </p>
+	{% if production.stock > 0 %}
+		<a href="#"> Buy </a>
+	{% endif %}
 	<br><br>
 	<a href="/productions/"> Return to the list </a>
 {% endblock %}
