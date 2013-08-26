@@ -3,7 +3,7 @@
 
 {% block content %}
 	<h1> {{ production.number }} </h1><br>
-	<img src="/media/{{ production.image }}" width="250px" height="250px"/>
+	<img src="/media/{{ production.image }}" width="250px" height="180px"/>
 	<i> {{ production.description }} </i>
 	<p> $ {{ production.price }} </p>
 	<p> No. available: {{ production.stock }} </p>
@@ -11,5 +11,8 @@
 		<a href="#"> Buy </a>
 	{% endif %}
 	<br><br>
-	<a href="/productions/"> Return to the list </a>
+	<!--
+	#<a href="/productions/pages/1/"> Return to the list </a>
+	-->
+	<a href="javascript:window.history.go(-1);"> Return to the list </a>
 {% endblock %}

@@ -6,7 +6,7 @@ from django.core.mail import EmailMultiAlternatives
 
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
-
+from django.core.paginator import Paginator, EmptyPage,InvalidPage
 def index_view(request):
 	return render_to_response('home/index.html',context_instance=RequestContext(request))
 
@@ -15,9 +15,18 @@ def about_view(request):
 	ctx ={'msg':message}
 	return render_to_response('home/about.html',ctx,context_instance=RequestContext(request))
 
-def productions_view(request):
-	prod = production.objects.filter(status=True)
-	ctx = {'productions':prod}
+def productions_view(request,pagina):
+	list_prod = production.objects.filter(status=True)
+	paginator = Paginator(list_prod,3) #3 items per page
+	try:
+		page = int(pagina)
+	except:
+		page = 1
+	try:
+		productions = paginator.page(page)
+	except (EmptyPage, InvalidPage):
+		productions = paginator.page(paginator.num_pages)
+	ctx = {'productions':productions}
 	return render_to_response('home/productions.html', ctx, context_instance=RequestContext(request))
 
 def singleProduct_view(request, id_prod):

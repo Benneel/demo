@@ -4,7 +4,7 @@ from demo.apps.ventas.forms import addProductForm
 from demo.apps.ventas.models import production
 from django.http import HttpResponseRedirect
 
-def add_product_view(request):
+def addProduct_view(request):
 	info = "Loading"
 	if request.user.is_authenticated():
 		if request.method == "POST":

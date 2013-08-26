@@ -21,8 +21,25 @@
 {% else %}
 	<h2> Not any production exist.. </h2> 
 {% endif %}
-	
-	<h4> {{ msg }} </h4>
+
+<br><br><br>	
+{% if productions %}
+	<a href="/productions/pages/1"> << </a>
+	{% if productions.has_previous %}
+		<a href="/productions/pages/{{productions.previous_page_number }}/"> Prev </a>
+	{% else %}
+		<a href="#"> Prev </a>
+	{% endif %}
+	{% if productions.has_next %}
+		<a href="/productions/pages/{{productions.next_page_number }}/"> Next </a>
+	{% else %}
+		<a href="#"> Next </a>
+	{% endif %}
+	<a href="/productions/pages/{{productions.paginator.num_pages}}"> >> </a>
+{% endif %}
+<br><br><br>
+
+<h4> Page {{ productions.number }} from {{ productions.paginator.num_pages }} </h4>
 
 <!--
 </body>
