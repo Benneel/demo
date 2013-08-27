@@ -6,40 +6,60 @@
 <body>
 -->
 {% block content %}
-	<h1> This is Productions page </h1>
+	<h2> Productions List </h2>
 
-	<h2> Cataluge </h2>
-<br>
 {% if user.is_authenticated %}
-	<a href="{% url "vista_add_product" %}"> Click here to add a product</a> <br>
+	<a href="{% url "vista_add_product" %}"> Click here to add a product</a> <br><br>
 {% endif %}
 
 {% if productions %}
-	{% for p in productions %}
-		<p> <a href="/production/{{p.id}}/"> {{ p.number}}</a> </p>
-	{% endfor %}
+	<table class="table table-hover">
+		<theader>
+			<tr>
+				<th>Product</th>
+				<th>price</th>
+				<th>stock</th>
+			</tr>
+		</theader>
+		{% for p in productions %}
+			<tbody>
+				<tbody>
+					<tr>
+						<td>{{p.number}}</td>
+						<td>{{p.price}}</td>
+						<td>{{p.stock}}</td>
+						<td><a class="btn" href="/production/{{p.id}}/"><li class="icon-search"></li> Find</a></td>
+						<td><a class="btn" href="#"><li class="icon-shopping-cart"></li> Buy</a></td>
+					</tr>
+				</tbody>
+			</tbody>	
+		{% endfor %}
+	</table>
 {% else %}
-	<h2> Not any production exist.. </h2> 
+	<h2> The stock is empty! </h2> 
 {% endif %}
 
-<br><br><br>	
 {% if productions %}
-	<a href="/productions/pages/1"> << </a>
-	{% if productions.has_previous %}
-		<a href="/productions/pages/{{productions.previous_page_number }}/"> Prev </a>
-	{% else %}
-		<a href="#"> Prev </a>
-	{% endif %}
-	{% if productions.has_next %}
-		<a href="/productions/pages/{{productions.next_page_number }}/"> Next </a>
-	{% else %}
-		<a href="#"> Next </a>
-	{% endif %}
-	<a href="/productions/pages/{{productions.paginator.num_pages}}"> >> </a>
+	<div class="pagination pagination-centered">
+		<ul>
+			<li><a href="/productions/pages/1"> << </a></li>
+			{% if productions.has_previous %}
+				<li><a href="/productions/pages/{{productions.previous_page_number }}/"> Prev </a></li>
+			{% else %}
+				<li><a href="#"> Prev </a></li>
+			{% endif %}
+			{% if productions.has_next %}
+				<li><a href="/productions/pages/{{productions.next_page_number }}/"> Next </a></li>
+			{% else %}
+				<li><a href="#"> Next </a></li>
+			{% endif %}
+			<li><a href="/productions/pages/{{productions.paginator.num_pages}}"> >> </a></li>
+		</ul>
+	</div>
 {% endif %}
-<br><br><br>
-
-<h4> Page {{ productions.number }} from {{ productions.paginator.num_pages }} </h4>
+<center>
+	<h5> Page {{ productions.number }} from {{ productions.paginator.num_pages }} </h5>
+</center>
 
 <!--
 </body>

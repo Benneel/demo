@@ -1,12 +1,83 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title> {% block title %} {% endblock %} </title>
+	<title> {% block title %} Welcome {% endblock %} </title>
 
-	{% block css %} <link rel="stylesheet" href="/media/css/style8.css" {%endblock %}
+	<link rel="stylesheet" href="/media/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="/media/bootstrap/css/bootstrap-responsive.css">
+	<script src="/media/js/jquery.js"></script>
+	<script src="/media/bootstrap/js/bootstrap.js"></script>
+
+	<style type="text/css">
+		body{
+			padding-top: 30px;
+			padding-bottom: 40px;
+			
+		}
+		.sidebar-nav{
+			padding: 9px 0;
+		}
+	</style>
 
 </head>
 <body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		 <div class="navbar-inner">
+		 	<a class="brand" href="{% url "vista_principal" %}"> Sales Project</a>
+		 	{% if user.is_authenticated %}
+		 		<p class="navbar-text pull-right">
+		 			User {{ user.username }}
+		 		</p>
+		 	{% endif %}
+		 	<ul class="nav">
+		 		<li><a href="{% url "vista_principal" %}"> Home</a></li>
+				<li><a href="/productions/pages/1/"> Productions</a></li>
+				<li><a href="{% url "vista_contacts" %}"> Contacts</a></li>
+				<li><a href="{% url "vista_about" %}"> About</a></li>
+				{% if user.is_authenticated %}
+					<li><a href="{% url "vista_logout" %}"> Close Session</a></li>
+				{% else %}
+					<li><a href="{% url "vista_login" %}"> Login</a></li>
+				{% endif %}
+		 	</ul>
+		 </div>
+	</div>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span9">
+				<div class="hero-unit">
+					{% block content %}
+					{% endblock %}
+				</div>
+			</div> <!--span9-->
+			<div class="span3 sb-fixed">
+				<div class="well sidebar-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header"> MyCart</li>
+						<br><p align="justify">
+							Shopping Cart
+						</p>
+					</ul>
+				</div>
+			</div> <!--span3-->
+			<div class="span3 sb-fixed">
+				<div class="well sidebar-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header"> New Products </li>
+						<br><p align="justify">
+							here will be new products
+						</p>
+					</ul>
+				</div>
+				<img src="/media/images/django.gif"/>
+			</div> <!--span3-->
+		</div> <!--row-fluid-->
+		<hr>
+		<footer>
+			<p>&copy; Open Project 2013</p>
+		</footer>
+	</div> <!--container-->
+<!--
 <header>
 	<img src="{{ MEDIA_URL }}images/django.gif"/>
 	<h1>Demo Project</h1>
@@ -22,9 +93,7 @@
 		{% endif %}
 	</nav>
 </header>
-<section>
-	{% block content %}
-	{% endblock %}
-</section>
+-->
+
 </body>
 </html>

@@ -17,7 +17,7 @@ def about_view(request):
 
 def productions_view(request,pagina):
 	list_prod = production.objects.filter(status=True)
-	paginator = Paginator(list_prod,3) #3 items per page
+	paginator = Paginator(list_prod,5) #3 items per page
 	try:
 		page = int(pagina)
 	except:
