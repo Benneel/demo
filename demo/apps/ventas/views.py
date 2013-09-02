@@ -37,3 +37,33 @@ def addProduct_view(request):
 			return render_to_response('sales/addProduct.html',ctx,context_instance=RequestContext(request))
 	else:
 		return HttpResponseRedirect('/')
+
+
+
+def edit_product_view(request, id_prod):
+	p = production.objects.get(id=id_prod)
+	if request.method == "POST":
+		form = addProductForm(request.POST, request.FILES)
+		if form.is_valid():
+			number = form.cleaned_data['number']
+			description = form.cleaned_data['description']
+			image = form.cleaned_data['image']
+			price = form.cleaned_data['price']
+			stock = form.cleaned_data['stock']
+			p.number = number
+			p.description = description
+			p.price = price
+			p.stock = stock
+			if image:
+				p.image = image
+			p.save()
+			return HttpResponseRedirect('/production/%s'%p.id)
+	if request.method == "GET":
+		form = addProductForm(initial={
+				'number':p.number,
+				'description':p.description,
+				'price':p.price,
+				'stock':p.stock,
+			})
+	ctx = {'form':form, 'production':p}
+	return render_to_response('sales/editProduct.html',ctx,context_instance=RequestContext(request))
