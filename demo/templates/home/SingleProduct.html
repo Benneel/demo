@@ -6,7 +6,12 @@
 	<img src="/media/{{ production.image }}" width="250px" height="180px"/><br>
 	<i> {{ production.description }} </i>
 	<p> $ {{ production.price }} </p>
-	<p> No. available: {{ production.stock }} </p>
+	<p> {{ production.stock }} item[s] available</p><br>
+	<u><h5> Categories:</h5></u>
+	{% for cat in category %}
+		<span class="label label-info"> {{cat.number}}</span>
+	{% endfor %}
+	<br><br>
 	{% if production.stock > 0 %}
 		<a href="#" class="btn btn-primary"> Buy </a>
 	{% endif %}

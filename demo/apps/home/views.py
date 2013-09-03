@@ -31,7 +31,8 @@ def productions_view(request,pagina):
 
 def singleProduct_view(request, id_prod):
 	prod = production.objects.get(id=id_prod)
-	ctx = {'production':prod}
+	cats = prod.category.all()
+	ctx = {'production':prod, 'category':cats}
 	return render_to_response('home/SingleProduct.html',ctx,context_instance=RequestContext(request))
 
 def contacts_view(request):
