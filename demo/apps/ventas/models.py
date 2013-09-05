@@ -22,6 +22,11 @@ class production(models.Model):
 		root = "MultimediaData/production/%s/%s"%(self.number,str(filename))
 		return root
 
+	def thumbnail(self):
+		return '<a href="/media/%s"><img src="/media/%s" width=50px height=50px/></a>'%(self.image, self.image)
+
+	thumbnail.allow_tags = True
+
 	number		= models.CharField(max_length=200)
 	description	= models.TextField(max_length=300)
 	status		= models.BooleanField(default=True)

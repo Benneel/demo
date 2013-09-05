@@ -5,15 +5,19 @@ from demo.apps.home.forms import ContactForm, LoginForm, RegisterForm
 from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth.models import User
 
+import django
+
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage,InvalidPage
+
 def index_view(request):
 	return render_to_response('home/index.html',context_instance=RequestContext(request))
 
 def about_view(request):
+	version = django.get_version()
 	message = "This is a message"
-	ctx ={'msg':message}
+	ctx ={'msg':message, 'version':version}
 	return render_to_response('home/about.html',ctx,context_instance=RequestContext(request))
 
 def productions_view(request,pagina):
